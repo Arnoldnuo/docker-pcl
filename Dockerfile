@@ -26,5 +26,6 @@ RUN apt-get install -y \
     python-mock \
     python-pip \
     python-websocket \
+    vim \
     --no-install-recommends
 RUN apt-get install -y libpcl-all
