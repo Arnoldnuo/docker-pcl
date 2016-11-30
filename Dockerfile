@@ -31,5 +31,5 @@ RUN apt-get install -y \
     vim \
     --no-install-recommends
 //sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.9
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60
 RUN apt-get install -y libpcl-all
