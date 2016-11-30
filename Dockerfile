@@ -4,10 +4,12 @@ MAINTAINER Jaynti Kanani
 
 RUN apt-get update
 RUN apt-get install -y software-properties-common
-RUN add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test
+RUN add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
+RUN apt-get update
 RUN apt-get install -y \
     gcc-4.9 \
+    g++-4.9 \
     wget \
     ca-certificates \
     apparmor \
@@ -30,5 +32,6 @@ RUN apt-get install -y \
     python-websocket \
     vim \
     --no-install-recommends
-RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60
-RUN apt-get install -y libpcl-all
+#RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.9
+RUN apt-get install -y libpcl1 libpcl1-dev
