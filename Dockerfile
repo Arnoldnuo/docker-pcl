@@ -31,6 +31,7 @@ RUN apt-get install -y \
     python-pip \
     python-websocket \
     vim \
+	openssh-client \
     --no-install-recommends
 #RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.9
