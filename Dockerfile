@@ -4,7 +4,7 @@ MAINTAINER Jaynti Kanani
 
 RUN apt-get update
 RUN apt-get install -y software-properties-common
-RUN add-apt-repository ppa:boost-latest/ppa
+RUN add-apt-repository -y ppa:boost-latest/ppa
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN add-apt-repository -y ppa:v-launchpad-jochen-sprickerhof-de/pcl
 RUN apt-get update
