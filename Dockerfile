@@ -14,7 +14,7 @@ RUN apt-get install -y mpi-default-dev openmpi-bin openmpi-common
 RUN apt-get install -y libflann1.8 libflann-dev
 RUN apt-get install -y libeigen3-dev
 RUN apt-get install -y libboost-all-dev
-RUN apt-get install -y libvtk5.10-qt4 libvtk5.10 libvtk5-dev
+RUN apt-get install -y libvtk5.8-qt4 libvtk5.8 libvtk5-dev
 RUN apt-get install -y libqhull* libgtest-dev
 RUN apt-get install -y freeglut3-dev pkg-config
 RUN apt-get install -y libxmu-dev libxi-dev 
