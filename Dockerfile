@@ -1,6 +1,6 @@
 # Pull base image
 # based on - https://larrylisky.com/2016/11/03/point-cloud-library-on-ubuntu-16-04-lts/
-FROM ubuntu:16.04
+FROM ubuntu:14.04
 MAINTAINER Matt MacGillivray
 
 # install prereqs
@@ -18,20 +18,12 @@ RUN apt-get install -y libvtk5.10-qt4 libvtk5.10 libvtk5-dev
 RUN apt-get install -y libqhull* libgtest-dev
 RUN apt-get install -y freeglut3-dev pkg-config
 RUN apt-get install -y libxmu-dev libxi-dev 
-RUN apt-get install -y mono-complete
+#RUN apt-get install -y mono-complete
 RUN apt-get install -y qt-sdk openjdk-8-jdk openjdk-8-jre
 RUN apt-get install -y openssh-client
 
 
 # get pcl
-#RUN add-apt-repository -y ppa:v-launchpad-jochen-sprickerhof-de/pcl
-#RUN apt-get update
-RUN git clone https://github.com/PointCloudLibrary/pcl.git ~/pcl
-
-# install pcl
-RUN mkdir ~/pcl/release
-RUN cd ~/pcl/release && cmake -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr \
-           -DBUILD_GPU=ON -DBUILD_apps=ON -DBUILD_examples=ON \
-           -DCMAKE_INSTALL_PREFIX=/usr ~/pcl
-RUN cd ~/pcl/release && make
-RUN cd ~/pcl/release && make install
+RUN add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
+sudo apt-get update
+sudo apt-get install libpcl-all
