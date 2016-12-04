@@ -22,6 +22,12 @@ RUN apt-get install -y libxmu-dev libxi-dev
 RUN apt-get install -y qt-sdk openjdk-7-jdk openjdk-7-jre
 RUN apt-get install -y openssh-client
 
+# upgrade gcc/g++
+RUN add-apt-repository ppa:ubuntu-toolchain-r/test
+RUN apt-get update
+RUN apt-get install -y g++-4.9 gcc-4.9
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 50 --slave /usr/bin/g++ g++ /usr/bin/g++-4.9
+
 
 # get pcl
 RUN add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
