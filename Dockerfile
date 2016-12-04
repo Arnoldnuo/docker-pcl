@@ -19,11 +19,11 @@ RUN apt-get install -y libqhull* libgtest-dev
 RUN apt-get install -y freeglut3-dev pkg-config
 RUN apt-get install -y libxmu-dev libxi-dev 
 #RUN apt-get install -y mono-complete
-RUN apt-get install -y qt-sdk openjdk-8-jdk openjdk-8-jre
+RUN apt-get install -y qt-sdk openjdk-7-jdk openjdk-7-jre
 RUN apt-get install -y openssh-client
 
 
 # get pcl
 RUN add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
-sudo apt-get update
-sudo apt-get install libpcl-all
+RUN apt-get update
+RUN apt-get install libpcl-all
