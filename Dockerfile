@@ -26,4 +26,4 @@ RUN apt-get install -y openssh-client
 # get pcl
 RUN add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
 RUN apt-get update
-RUN apt-get install libpcl-all
+RUN apt-get install -y libpcl-all
