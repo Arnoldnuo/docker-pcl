@@ -30,10 +30,10 @@ RUN apt-get install -y phonon-backend-gstreamer
 RUN apt-get install -y phonon-backend-vlc
 RUN apt-get install -y openssh-client
 
-RUN cd /opt && git clone https://github.com/PointCloudLibrary/pcl.git pcl
+RUN cd /opt && git clone https://github.com/PointCloudLibrary/pcl.git pcl-trunk
 RUN ln -s /opt/pcl-trunk /opt/pcl
-RUN cd /opt/pcl && git checkout tags/pcl-1.8
+RUN cd /opt/pcl && git checkout pcl-1.8.0
 RUN mkdir -p /opt/pcl-trunk/release
 RUN cd /opt/pcl/release && cmake -DCMAKE_BUILD_TYPE=None -DBUILD_GPU=ON -DBUILD_apps=ON -DBUILD_examples=ON ..
-RUN make -j3
-RUN make install
+RUN cd /opt/pcl/release && make -j3
+RUN cd /opt/pcl/release && make install
