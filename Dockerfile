@@ -3,35 +3,29 @@
 FROM ubuntu:16.04
 MAINTAINER Matt MacGillivray
 
-# install prereqs
-RUN apt-get update
-RUN apt-get install -y software-properties-common
-RUN apt-get update
-RUN apt-get install -y git build-essential linux-libc-dev
-RUN apt-get install -y cmake cmake-gui 
-RUN apt-get install -y libusb-1.0-0-dev libusb-dev libudev-dev
-RUN apt-get install -y mpi-default-dev openmpi-bin openmpi-common  
-RUN apt-get install -y libflann1.8 libflann-dev
-RUN apt-get install -y libeigen3-dev
-RUN apt-get install -y libboost-all-dev
-RUN apt-get install -y libvtk5.10-qt4 libvtk5.10 libvtk5-dev
-RUN apt-get install -y libqhull* libgtest-dev
-RUN apt-get install -y freeglut3-dev pkg-config
-RUN apt-get install -y libxmu-dev libxi-dev 
-RUN apt-get install -y mono-complete
-RUN apt-get install -y qt-sdk openjdk-8-jdk openjdk-8-jre
-RUN apt-get install -y openssh-client
+#RUN apt-get install -y software-properties-common
+RUN apt-get update && apt-get install -y \
+		git build-essential linux-libc-dev \
+		cmake cmake-gui \
+		libusb-1.0-0-dev libusb-dev libudev-dev \
+		mpi-default-dev openmpi-bin openmpi-common \
+		libflann1.8 libflann-dev \
+		libeigen3-dev \
+		libboost-all-dev \
+		libvtk5.10-qt4 libvtk5.10 libvtk5-dev \
+		libqhull* libgtest-dev \
+		freeglut3-dev pkg-config \
+		libxmu-dev libxi-dev \
+		qt-sdk openjdk-8-jdk openjdk-8-jre \
+		openssh-client
 
 
-# get pcl
-#RUN add-apt-repository -y ppa:v-launchpad-jochen-sprickerhof-de/pcl
-#RUN apt-get update
-RUN git clone https://github.com/PointCloudLibrary/pcl.git ~/pcl
-
-# install pcl
-RUN mkdir ~/pcl/release
-RUN cd ~/pcl/release && cmake -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr \
-           -DBUILD_GPU=ON -DBUILD_apps=ON -DBUILD_examples=ON \
-           -DCMAKE_INSTALL_PREFIX=/usr ~/pcl
-RUN cd ~/pcl/release && make
-RUN cd ~/pcl/release && make install
+# PCL - build from source and install
+RUN cd /opt \
+   && git clone https://github.com/PointCloudLibrary/pcl.git pcl-trunk \
+   && ln -s /opt/pcl-trunk /opt/pcl \
+   && cd /opt/pcl && git checkout pcl-1.8.0 \
+   && mkdir -p /opt/pcl-trunk/release \
+   && cd /opt/pcl/release && cmake -DCMAKE_BUILD_TYPE=None -DBUILD_GPU=ON -DBUILD_apps=ON -DBUILD_examples=ON .. \
+   && cd /opt/pcl/release && make -j3 \
+   && cd /opt/pcl/release && make install
