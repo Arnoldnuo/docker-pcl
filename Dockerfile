@@ -28,4 +28,5 @@ RUN cd /opt \
    && mkdir -p /opt/pcl-trunk/release \
    && cd /opt/pcl/release && cmake -DCMAKE_BUILD_TYPE=None -DBUILD_GPU=ON -DBUILD_apps=ON -DBUILD_examples=ON .. \
    && cd /opt/pcl/release && make -j3 \
-   && cd /opt/pcl/release && make install
+   && cd /opt/pcl/release && make install \
+   && cd /opt/pcl/release && make clean
