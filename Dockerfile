@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
 		libeigen3-dev \
 		libboost-all-dev \
 		libvtk5.10-qt4 libvtk5.10 libvtk5-dev \
+		tcl-vtk python-vtk libvtk-java \
 		libqhull* libgtest-dev \
 		freeglut3-dev pkg-config \
 		libxmu-dev libxi-dev \
