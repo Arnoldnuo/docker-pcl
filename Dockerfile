@@ -33,7 +33,9 @@ RUN apt-get update && apt-get install -y \
 		qt-sdk openjdk-7-jdk openjdk-7-jre \
 		phonon-backend-gstreamer \
 		phonon-backend-vlc \
-		openssh-client 
+		openssh-client \
+		vim \
+		nano
 
 # PCL - build from source and install
 RUN cd /opt \ 
