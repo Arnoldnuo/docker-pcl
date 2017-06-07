@@ -18,9 +18,7 @@ RUN apt-get update && apt-get install -y \
 		freeglut3-dev pkg-config \
 		libxmu-dev libxi-dev \
 		qt-sdk openjdk-8-jdk openjdk-8-jre \
-		openssh-client \
-		vim \
-		nano
+		openssh-client
 
 
 # PCL - build from source and install
