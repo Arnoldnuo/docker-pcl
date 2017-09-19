@@ -27,7 +27,14 @@ RUN cd /opt \
    && ln -s /opt/pcl-trunk /opt/pcl \
    && cd /opt/pcl && git checkout pcl-1.8.0 \
    && mkdir -p /opt/pcl-trunk/release \
-   && cd /opt/pcl/release && cmake -DCMAKE_BUILD_TYPE=None -DBUILD_GPU=ON -DBUILD_apps=ON -DBUILD_examples=ON .. \
+   && cd /opt/pcl/release && cmake -DCMAKE_BUILD_TYPE=None -DBUILD_GPU=OFF -DBUILD_apps=ON -DBUILD_examples=ON .. \
    && cd /opt/pcl/release && make -j3 \
    && cd /opt/pcl/release && make install \
    && cd /opt/pcl/release && make clean
+
+
+RUN cd /opt \
+   && git clone https://github.com/CGAL/cgal cgal \
+	&& cd /opt/cgal && git checkout releases/CGAL-4.10.1 \
+	&& cmake . \
+	&& make
