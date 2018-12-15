@@ -26,7 +26,7 @@ RUN apt-get install -y openssh-client
 # get pcl
 #RUN add-apt-repository -y ppa:v-launchpad-jochen-sprickerhof-de/pcl
 #RUN apt-get update
-RUN git clone https://github.com/PointCloudLibrary/pcl.git ~/pcl
+RUN git clone https://github.com/PointCloudLibrary/pcl.git ~/pcl && cd ~/pcl && git checkout pcl-1.9.1
 
 # install pcl
 RUN mkdir ~/pcl/release
