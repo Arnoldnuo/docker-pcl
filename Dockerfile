@@ -30,8 +30,13 @@ RUN git clone https://github.com/PointCloudLibrary/pcl.git ~/pcl && cd ~/pcl && 
 
 # install pcl
 RUN mkdir ~/pcl/release
-RUN cd ~/pcl/release && cmake -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr \
-           -DBUILD_GPU=ON -DBUILD_apps=ON -DBUILD_examples=ON \
+RUN cd ~/pcl/release && cmake -DCMAKE_BUILD_TYPE=None \
+           -DBUILD_SHARED_LIBS:BOOL=ON \
+           -DCMAKE_INSTALL_PREFIX=/usr \
+           -DBUILD_GPU=ON \
+           -DBUILD_apps=ON \
+           -DBUILD_examples=ON \
+           -DBUILD_OPENNI2:BOOL=ON \
            -DCMAKE_INSTALL_PREFIX=/usr ~/pcl
 RUN cd ~/pcl/release && make
 RUN cd ~/pcl/release && make install
